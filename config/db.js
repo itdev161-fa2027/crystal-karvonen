@@ -1,9 +1,12 @@
 import mongoose from 'mongoose';
 import config from 'config';
+import dotenv from 'dotenv';
 
-const db = config.get('mongoURI');
+dotenv.config();
 
-const connectDB = async () => {
+const db = process.env.MONGO_URI || config.get('mongoURI'); //gt connection string
+
+const connectDB = async () => { //connect to mongoDB
   try {
     console.log('Attempting to connect to MongoDB...');
     await mongoose.connect(db);
