@@ -7,12 +7,18 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import auth from './middleware/auth.js';
 import dotenv from 'dotenv';
+import cors from 'cors';
+
 // Initialize express application
 dotenv.config();
 const app = express();
 
 // Connect to the database
 connectDB();
+
+// Enable CORS
+app.use(cors());
+
 
 // Configure Middleware
 app.use(express.json());
